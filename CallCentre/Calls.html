@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<head>
+
+<title>Interact Eduction</title>
+<link href="Input.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="headstyle.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<script>
+var userid;
+var company;
+var NewDets;
+var dbSec;
+
+function Dets() {
+
+var retrievedObject = localStorage.getItem('testObject');
+NewDets = JSON.parse(retrievedObject);
+document.getElementById("Userdets").innerHTML = 'Currently logged on :- ' + NewDets.User;
+dbSec = '&u=' + NewDets.User + '&p=' + NewDets.Pass;
+userid = NewDets.Uid;
+Dets5();
+}
+
+function save(type) {
+Course=null;
+
+if ('1'== type) {
+	if ('0'== document.getElementById("course").value){
+		alert('Please select course!');
+		return;
+	}
+Course = document.getElementById("course").value;
+}
+
+txt = "b=exec SaveContact ";
+txt = txt + userid + ", "; 
+txt = txt + document.getElementById("IdNo").value + ", "; 
+txt = txt + Course + ", '"; 
+txt = txt + document.getElementById("notes").value + "', "; 
+txt = txt + type; 
+txt = txt + dbSec; 
+
+
+xmlhttp=new XMLHttpRequest();
+xmlhttp.open("POST","dBase2.php",true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.setRequestHeader("Content-length", txt.length);
+xmlhttp.setRequestHeader("Connection", "close");
+
+xmlhttp.onreadystatechange=function()
+   {
+   if (xmlhttp.readyState==4)
+      {	
+        document.getElementById("IdNo").value='';
+        document.getElementById("cand").value='';
+	document.getElementById("add").value='';
+	document.getElementById("city").value='';
+	document.getElementById("stat").value='';
+	document.getElementById("pcode").value='';
+	document.getElementById("ph1").value='';
+	document.getElementById("ph2").value='';
+	document.getElementById("dob").value='';
+	document.getElementById("course").value='0';
+	document.getElementById("notes").value='';
+	next();
+      }
+   }
+
+xmlhttp.send(txt);
+}
+
+function reset(indval) {
+if ('1'== indval) {Dets();}
+
+txt = 'b=exec ResetCalls 2' + userid + ', 9';
+txt = txt + dbSec; 
+
+xmlhttp=new XMLHttpRequest();
+xmlhttp.open("POST","dBase2.php",true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.setRequestHeader("Content-length", txt.length);
+xmlhttp.setRequestHeader("Connection", "close");
+
+xmlhttp.onreadystatechange=function()
+   {
+   if (xmlhttp.readyState==4)
+      {	
+	document.getElementById("IdNo").value='';
+	document.getElementById("cand").value='';
+	document.getElementById("add").value='';
+	document.getElementById("city").value='';
+	document.getElementById("stat").value='';
+	document.getElementById("pcode").value='';
+	document.getElementById("ph1").value='';
+	document.getElementById("ph2").value='';
+	document.getElementById("dob").value='';
+	document.getElementById("notes").value='';
+	next();
+      }
+   }
+
+xmlhttp.send(txt);
+Dets4();
+}
+
+
+function next() {
+
+txt = 'b=exec InputCalls 2' + userid;
+txt = txt + ", '" + document.getElementById("Comp").value + "'";
+txt = txt + dbSec; 
+
+xmlhttp=new XMLHttpRequest();
+xmlhttp.open("POST","dBaseQuals.php",true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.setRequestHeader("Content-length", txt.length);
+xmlhttp.setRequestHeader("Connection", "close");
+
+
+xmlhttp.onreadystatechange=function()
+   {
+   if (xmlhttp.readyState==4)
+      {	
+	if((xmlhttp.responseText).length < 10){
+		alert('No records!');
+		return;
+	}
+        objData1 = JSON.parse(xmlhttp.responseText);
+        document.getElementById("IdNo").value = objData1.ResumeId;
+        document.getElementById("IdNo").value = objData1.ResumeId;
+        document.getElementById("cand").value = objData1.Candidate;
+	document.getElementById("add").value = objData1.Address;
+	document.getElementById("city").value = objData1.City;
+	document.getElementById("stat").value = objData1.State;
+	document.getElementById("pcode").value = objData1.PCode;
+	document.getElementById("ph1").value = objData1.Phnumber;
+	document.getElementById("ph2").value = objData1.Phnumber2;
+	document.getElementById("dob").value = objData1.DOB.date;
+      }
+   }
+xmlhttp.send(txt);
+}
+
+function Dets4() {
+txt6 = "b=select * from futurecourses order by dtcommence";
+
+xmlhttp2=new XMLHttpRequest();
+xmlhttp2.open("POST","dBaseTraining3.php",true);
+xmlhttp2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp2.setRequestHeader("Content-length", txt6.length);
+xmlhttp2.setRequestHeader("Connection", "close");
+
+xmlhttp2.onreadystatechange=function() {
+   	if (xmlhttp2.readyState==4) {	
+      		obj6 = xmlhttp2.responseText;
+      		obj7 = JSON.parse(obj6);
+      		txt7 = '<label for="course">Courses:- </label><select id="course" class="ta" size="15" style="width: 300px">';
+      		len=obj7.length;
+
+      		for (var i=0; i<len; i++) {
+      			txt7 = txt7 + '<option value=' + obj7[i].SchedId  + '>' + obj7[i].DateScheduled + ' - ' + obj7[i].CourseCode + ' - ' + obj7[i].Venue + '</option>';
+      		}
+		txt7 = txt7 + '</select><br />'
+		document.getElementById("rightcol").innerHTML=txt7;
+	}
+}
+xmlhttp2.send(txt6);
+}
+
+function Dets5() {
+txt8 = "b=select distinct company from resumes";
+
+xmlhttp3=new XMLHttpRequest();
+xmlhttp3.open("POST","dBaseBluestone.php",true);
+xmlhttp3.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp3.setRequestHeader("Content-length", txt8.length);
+xmlhttp3.setRequestHeader("Connection", "close");
+
+xmlhttp3.onreadystatechange=function() {
+   	if (xmlhttp3.readyState==4) {	
+      		obj8 = xmlhttp3.responseText;
+      		obj9 = JSON.parse(obj8);
+      		txt9 = '<label for="Comp">Company:- </label><select id="Comp" class="ta" onchange="reset(this.value)">';
+      		txt9 = txt9 + '<option value=Select>Please select</option>';
+      		len=obj9.length;
+
+      		for (var i=0; i<len; i++) {
+      			txt9 = txt9 + '<option value=' + obj9[i].company  + '>' + obj9[i].company + '</option>';
+      		}
+		txt9 = txt9 + '</select><br />'
+		document.getElementById("midcolhead").innerHTML=txt9;
+	}
+}
+xmlhttp3.send(txt8);
+}
+
+</script>
+
+<body onload="reset(1)">
+<div id="wrapper">
+  <div id="header">
+    <div id="logo">
+    <h1>Pro-Active Training</h1>
+    <h2>...Call Centre Application</h2>		
+	<p id="Userdets"></p>
+    </div>
+  </div>
+</div>
+<div id="details">
+<div id="leftcol">
+	<label><input class="button" type="button" value="Home" onclick="location.href='CallsMenu.html'"/></label><br />
+	<label><input class="button" type="button" value="Book Course" onclick="save(1)"/></label><br />
+	<label><input class="button" type="button" value="Further Contact" onclick="save(2)"/></label><br />
+	<label><input class="button" type="button" value="No Answer" onclick="save(3)"/></label><br />
+	<label><input class="button" type="button" value="Not Interested" onclick="save(6)"/></label><br />
+	<label><input class="button" type="button" value="Lives Interstate" onclick="save(7)"/></label><br />
+	<label><input class="button" type="button" value="Not Eligible" onclick="save(8)"/></label><br />
+</div>
+
+<div id="midcol">
+<div id="midcolhead">
+</div>
+     <label for="IdNo">Id Number:- </label> 
+     <input type="text" id="IdNo" class="input" /><br />
+     <label for="cand">Candidate Name:-</label>
+     <input type="text" id="cand" class="input" /><br />
+     <label for="add">Address:- </label> 
+     <input type="text" id="add" class="input" /><br />
+     <label for="city">City:- </label> 
+     <input type="text" id="city" class="input" /><br />
+     <label for="stat">State:- </label> 
+     <input type="text" id="stat" class="input" /><br />
+     <label for="pcode">Postcode:- </label> 
+     <input type="text" id="pcode" class="input" /><br />
+     <label for="ph1">Phone No:- </label> 
+     <input type="text" id="ph1" class="input" /><br />
+     <label for="ph2">Alt Ph No:- </label> 
+     <input type="text" id="ph2" class="input" /><br />
+     <label for="dob">Birth Date:- </label> 
+     <input type="date" id="dob" class="input" /><br />
+     <label for="notes">Notes:-</label>
+     <textarea id="notes" class="ta" rows="4" cols="50"></textarea>
+</div>
+
+<div id="rightcol">
+<br />
+</div>
+</div>
+</div>
+</body>
+</html> 

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href="Input.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="headstyle.css" rel="stylesheet" type="text/css" media="screen" />
+<title>Interact Eduction</title>
+</head>
+
+<script> 
+var NewDets;
+
+function Dets() {
+
+var retrievedObject = localStorage.getItem('testObject');
+NewDets = JSON.parse(retrievedObject);
+document.getElementById("Userdets").innerHTML = 'Currently logged on :- ' + NewDets.User;
+
+}
+</script> 
+
+
+<body onload="Dets()">
+<div id="wrapper">
+  <div id="header">
+    <div id="logo">
+    <h1>Pro-Active Training</h1>
+    <h2>...Call Centre Application</h2>		
+	<p id="Userdets"></p>
+    </div>
+  </div>
+</div>
+<div id="details">
+<div id="leftcol">
+  <h2>...Admin</h2><br />
+	<label><input class="button" type="button" value="Import Data" onclick="location.href='import.html'" /></label><br />
+	<label><input class="button" type="button" value="Export Data" onclick="location.href='export.html'" /></label><br />
+</div>
+<div id="midcol">
+  <h2>...Sales</h2><br />
+	<label><input class="button" type="button" value="New Leads" onclick="location.href='calls.html'" /></label><br />
+	<label><input class="button" type="button" value="No Answer" onclick="location.href='callsnoans.html'" /></label><br />
+	<label><input class="button" type="button" value="Further Contact" onclick="location.href='callsinfo.html'" /></label><br />
+	<label><input class="button" type="button" value="Cert III Leads" onclick="location.href='callsc3.html'" /></label><br />
+	<label><input class="button" type="button" value="No shows" onclick="location.href='callsns.html'" /></label><br />
+</div>
+<div id="rightcol">
+</div>
+</div>
+</body>
+</html> 

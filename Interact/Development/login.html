@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href="css/Input.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/headstyle.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/main.css" rel="stylesheet" type="text/css" media="screen" />
+<script src="javascripts/jquery-1.11.0.min.js"></script>
+<title>Interact Eduction</title>
+</head>
+<script> 
+	$(function () {
+		$('#loginBtn').click(function(){Login();});
+		function Login() { 
+ 		$.ajax({
+			url: "business/dBaseSec1.php",
+			 type: "POST",
+			 data: { 'User': user.value, 'Pass': pass.value, 'Uid': 1 }
+			}).done(function(data) {
+				if(data!=0)
+					location.href='default.php';
+			});
+		}
+	});
+
+ 
+/*function Login() { 
+txt = 'b=' + user.value + '&c=' + pass.value;
+
+xmlhttp=new XMLHttpRequest();
+xmlhttp.open("POST","business/dBaseSec1.php",true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.setRequestHeader("Content-length", txt.length);
+xmlhttp.setRequestHeader("Connection", "close");
+
+
+xmlhttp.onreadystatechange=function()
+   {
+   if (xmlhttp.readyState==4)
+      {	
+	ans = xmlhttp.responseText;
+	if(ans==0){
+		alert('Login denied!');
+		return;
+	}
+	if (ans != '0') {
+		var testObject = { 'User': user.value, 'Pass': pass.value, 'Uid': ans };
+		localStorage.setItem('testObject', JSON.stringify(testObject));
+		userpass = 1;
+		location.href='default.html';
+		}
+      }
+   }
+xmlhttp.send(txt);
+}*/
+
+</script> 
+<body>
+<div id="wrapper">
+  <div id="header">
+    <div id="logo">
+    <h1>Pro-Active Training</h1>
+    <h2>...Login Screen</h2>		
+    </div>
+  </div>
+</div>
+<div id="details" class="centerDiv width400">
+<div class="left label width90">User Name:</div>
+<div class="right label  width300">
+<input placeholder="User Name" type="text" id="user" class="txtinput" />
+</div>
+<div class="clear"></div>
+<div class="left label width90">Password:</div>
+<div class="right label  width300">
+<input type="password" id="pass"  placeholder="Password"  class="txtinput" /></div>
+<div class="clear"></div>
+
+
+<p class="left"><a class="right margin-r-10" href="chpassnewuser.html">New User</a>
+     <!--<a href="chpass.html">Change Password</a>-->
+     </p>
+
+<input type="button" id="loginBtn" value="Login" class="button margin-r-10 right"> 
+
+ </div>
+</body>
+</html> 

@@ -1,0 +1,491 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>HiViz Ed- training</title>
+<link rel="shortcut icon" href="../images/favicon.ico" />
+<!-- Map Settings Start -->
+        
+        <style type="text/css">
+            /* Set a size for our map container, the Google Map will take up 100% of this container */
+            #map {
+                width: 100%px;
+                height: 350px;
+            }
+        </style>
+        
+        <!-- 
+            You need to include this script on any page that has a Google Map.
+            When using Google Maps on your own site you MUST signup for your own API key at:
+                https://developers.google.com/maps/documentation/javascript/tutorial#api_key
+            After your sign up replace the key in the URL below or paste in the new script tag that Google provides.
+        -->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc&sensor=false"></script>
+        
+        <script type="text/javascript">
+            // When the window has finished loading create our google map below
+            google.maps.event.addDomListener(window, 'load', init);
+        
+            function init() {
+                // Basic options for a simple Google Map
+                // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+                var mapOptions = {
+                    // How zoomed in you want the map to start at (always required)
+                    zoom: 11,
+
+                    // The latitude and longitude to center the map (always required)
+                    center: new google.maps.LatLng(-38.015491,145.262545), // New York
+
+                    // How you would like to style the map. 
+                    // This is where you would paste any style found on Snazzy Maps.
+                    styles: [{'featureType':'water','stylers':[{'visibility':'on'},{'color':'#acbcc9'}]},{'featureType':'landscape','stylers':[{'color':'#f2e5d4'}]},{'featureType':'road.highway','elementType':'geometry','stylers':[{'color':'#c5c6c6'}]},{'featureType':'road.arterial','elementType':'geometry','stylers':[{'color':'#e4d7c6'}]},{'featureType':'road.local','elementType':'geometry','stylers':[{'color':'#fbfaf7'}]},{'featureType':'poi.park','elementType':'geometry','stylers':[{'color':'#c5dac6'}]},{'featureType':'administrative','stylers':[{'visibility':'on'},{'lightness':33}]},{'featureType':'road'},{'featureType':'poi.park','elementType':'labels','stylers':[{'visibility':'on'},{'lightness':20}]},{},{'featureType':'road','stylers':[{'lightness':20}]}]
+                };
+
+                // Get the HTML DOM element that will contain your map 
+                // We are using a div with id="map" seen below in the <body>
+                var mapElement = document.getElementById('map');
+
+                // Create the Google Map using out element and options defined above
+                var map = new google.maps.Map(mapElement, mapOptions);
+            }
+        </script>
+<!-- Map Settings End -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!-- Mobile Specific Metas
+================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="../css/skeleton.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../css/menusm.css" />
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/menusm.js"></script>
+<script type="text/javascript" src="../js/scripts.js"></script>
+<script>
+	$(function () {
+		$('#menu-top-menu').tinyNav({
+			active: 'selected',
+			header: 'Navigation' 
+		});
+	});
+</script>
+<script type="text/javascript" src="../js/tinynav.min.js"></script>
+
+<!-- PrettyPhoto Starts -->
+<link rel="stylesheet" type="text/css" href="../prettyPhoto/css/prettyPhoto.css" />
+<script type="text/javascript" src="../prettyPhoto/js/jquery.prettyPhoto.js"></script>
+<!-- PrettyPhoto Ends -->
+<!-- Preloader Starts -->
+<link href="../preloader/css/preloader.css" rel="stylesheet" />
+<script src="../preloader/js/jquery.preloader.js" charset="utf-8"></script>
+<!-- Preloader Ends -->
+<!-- Ui To Top Starts -->
+<link href="../ui_totop/css/ui.totop.css" rel="stylesheet" />
+<script src="../ui_totop/js/jquery.ui.totop.js" charset="utf-8"></script>
+<!-- Ui To Top Ends -->
+<!-- DC Twitter Starts -->
+<link href="../twitter_tweet/jquery.tweet.css" rel="stylesheet" />
+<script src="../twitter_tweet/jquery.tweet.js" charset="utf-8"></script>
+<!-- DC Twitter End -->
+
+<!-- Config User Intarface Box Import START -->
+<script type="text/javascript" src="../js/head_html_default_block.js"></script>
+<script type="text/javascript" src="../js/head_html_block.js"></script>
+<!-- Config User Intarface Box Import END -->
+<!-- Gallery Starts -->
+<script type="text/javascript" src="../js/gallery-masonry/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="../js/gallery-masonry/modernizr-transitions.js"></script>
+<script type="text/javascript" src="../js/gallery-masonry/gallery-masonry.js"></script>
+<!-- Gallery Ends -->
+
+</head>
+<body>
+  <div class="index_page">
+    <div class="main">
+      <div class="header2">
+        <div class="header_top2">
+        
+          <div class="container">
+            <div class="menu"> 
+              
+              <!-- menu -->
+              <div class="menu"> 
+                <script type="text/javascript" src="../js/menu_html_block.js"></script> 
+              </div>
+              <!-- /menu --> 
+              
+              <!-- search --><!-- /search -->
+              <div class="clr"></div>
+            </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+        <div class="clr"></div>
+         <div class="container">
+          <div class="header_resize add"> 
+            
+            <!-- logo -->
+            <div class="logo">
+              <div></div>
+            </div>
+            <!-- logo -->
+            
+            <div class="fr100"> 
+              
+              <!-- social -->
+              <div class="fr100">
+                <div class="social_text">Stay Connected              </div>
+              </div>
+              <!-- social -->
+              <div class="clr"></div>
+              <div class="header_text2">
+               <pc><p>HiViz Ed has numerous training sites and they are all equally <span class=pyell>inviting</span> for our students and clients. </p>
+                <p>&nbsp;</p>
+                <p>Our trainers are <span class=pyell>proud</span> to train in our <span class=pyell>facilities</span> and we are known for our <span class=pyell>quality</span> and current training <span class=pyell>equipment.</span></p>
+                <p><br />
+                  <span class=pyell>We care</span> about everyone’s <span class=pyell>safety &amp; comfort</span> and our team are dedicated to this outcome.</p></pc>
+              </div>
+            <div class="clr"></div>
+          </div>
+          <div class="clr"></div>
+        </div>
+        </div>
+      <div class="clr"></div>
+      <div class="content" id="gallery">
+        <div class="container">
+          <div class="sixteen columns">
+            <div class="content_resize">
+              <div class="clr">
+                <div class="content_resize">
+                  <div class="content_page">
+                    <div class="content_full_size">
+                      <div class="h2_background" id="warehouse" >
+                        <h2 class="no_margin_top no_padding_top">More Info</span><br />
+                          <br />
+                          <div class="buttonFront5"><span class="pw" >Warehousing Operations</span></div>
+                        </h2>
+                        <p>&nbsp;</p>
+                        <div class="clr"></div>
+                      </div>
+                      <div class="clr">
+                     
+                      </div>
+                      <div class="pic fl img_hover_box" > <a href="http://www.youtube.com/watch?v=Z2Bs0nqVyqs"  class="prettyPhoto" rel="prettyPhoto[id]"><img src="../images/img03.png" width="456" height="246" alt="Amazon Warehouse" />
+                        <div class="img_hover_overlay">
+                          <div class="r_plus"></div>
+                        </div>
+                      </a></div>
+                      <p>This program has been developed to provide workers and jobseekers in the warehousing and storage industry with the latest warehousing skills, knowledge and thinking to expand their capabilities. Upon completion of the TLI31610 qualification, we will help you further with relevant workforce licences or tickets such as:
+• White Card
+• Forklift Licence
+• First Aid Certificate</p>
+                      <p>TLI21610 Certificate II
+in Warehousing
+Operations</p>
+                      <p>TLI31610 Certificate III
+                        in Warehousing
+                        Operations </p>
+                      <p><span class="buttonFront7"><a href="documents.html">Find the Flyer</a></span></p>
+                      <p>&nbsp;</p>
+                      
+                      <div class="text" id="cleaning"></div>
+                    </div>
+                    <div class="content_full_size">
+                      <div class="#">
+                      
+                        <div class="sep2" id="method8"></div>
+                        <div class="h2_background" >
+                          <h2 class="no_margin_top no_padding_top">
+                            <div class="buttonFront5"><span class="pw" >Cleaning Operations</span></div>
+                          </h2>
+                          <p>&nbsp;</p>
+                          <div class="clr"></div>
+                        </div>
+                        <div class="pic fr img_hover_box"> <a href="http://www.youtube.com/watch?v=AyRZUGI_qLk" class="prettyPhoto" rel="prettyPhoto[id]"><img src="../images/img04.png" width="456" height="246" alt="CLEANING IS A GREAT CAREER" /> </a>
+                          <div class="img_hover_overlay">
+                            <div class="r_plus"></div>
+                          </div>
+                        </div>
+                        <p>This program has been developed to provide workers and
+                          jobseekers in the cleaning industry with the latest cleaning
+                          skills, knowledge and thinking to expand their capabilities.</p>
+                        <p>Upon completion of the CPP31011 Certificate III in Cleaning 
+                          qualification, we will help you further with a First Aid Certificate.</p>
+                        <p><span class="buttonFront7"><a href="documents.html">Find the Flyer</a></span></p>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <h2 class="no_margin_top no_padding_top">&nbsp;</h2>
+                        <div class="clr"></div>
+                      </div>
+                      <div class="clr" ></div>
+                      <p><br/><br/><br/>
+                    </p>
+                    </div>
+                    <div class="content_full">
+                      <div class="cols4">
+                        <div class="content_full_size">
+                          <div class="#">
+                            <div class="content_full_size">
+                              <div class="text" id="fork">
+                                <div class="sep2" id="method"></div>
+                                <div class="h2_background" >
+                                  <h2 class="no_margin_top no_padding_top">
+                                    <div class="buttonFront5"><span class="pw" >Forklift Training</span></div>
+                                  </h2>
+                                  <p>&nbsp;</p>
+                                  <div class="clr"></div>
+                                </div>
+                                <h2 class="no_margin_top no_padding_top">&nbsp;</h2>
+                                <div class="clr"></div>
+                              </div>
+                              <div class="clr" ></div>
+                              <div class="pic fr img_hover_box"> <a href="http://www.youtube.com/watch?v=5wA67ejf-qs" class="prettyPhoto" rel="prettyPhoto[id]"><img src="../images/img05.png" width="456" height="246" alt="FORKLIFT ACCIDENTS" />
+                                <div class="img_hover_overlay">
+                                  <div class="r_plus"></div>
+                              </div>
+                              </a></div>
+                              <p> 
+
+Any person required to operate a forklift autonomously in Australia is required to hold a Licence to Perform High Risk Work. </p>
+                              <p>High Risk Work Licence assessments must only be conducted by a Registered Training Organisation that is authorised by WorkSafe Victoria. As of October 1 2012 there are some mandated changes taking place regarding the training and assessment process' for high risk work. </p>
+                              <p>Check the  PDF "High Risk Work Process" below for information on the right process for you.
+                                
+                                At HiViz Ed we pride ourselves on delivering quality training and assessments in forklift operation. To ensure  we give our students the best possible chance of passing their assessment we don't offer free re assessments, instead we offer quality training in small groups maximum 4 people.                                </p>
+                              <p>We prefer to be proactive and give a small number of students a large amount of attention, rather than being pective and offering free re assessments to students who may not have received the attention they need to pass the assessment 1st time around. By no means does this ensure every student passes 1st attempt, just that we give every student the best possible chance to achieve thier forklift licence.                                </p>
+                              <p>&nbsp;</p>
+                              <p>Onsite Forklift Licence Course Bayswater & Melbourne
+                                
+                                We can deliver forklift training and licence assessments to your site in Bayswater or anywhere in the Melbourne metro area. Courses will range from 1 -3 days depending on the operators experience and how many operators are attending the course.                                </p>
+                              <p>&nbsp;</p>
+                              <p>1 Day Forklift Course TLILIC2001A (includes assessment)
+                                
+                                Is for  experienced operators who have log book evidence of completing training under the supervision of a licenced driver. (contact us for a copy of our log book). </p>
+                              <p>These courses are run regularly at our training centre. It is expected that applicants have pre studied our training manual prior to the course.                               </p>
+                             <p><span class="buttonFront7"><a href="documents.html">Find the Flyer</a></span></p>
+     <p>&nbsp;</p>
+                            </div>
+                            <div id="stack"></div>
+                            <div class="content_full_size">
+                              <div class="#">
+                                <div class="content_full_size">
+                                  <div class="#">
+                                    <div class="sep2" id="method2"></div>
+                                    <div class="h2_background" >
+                                      <h2 class="no_margin_top no_padding_top">
+                                        <div class="buttonFront5"><span class="pw" >Order/Stock Picker</span></div>
+                                      </h2>
+                                      <p>&nbsp;</p>
+                                      <div class="clr"></div>
+                                    </div>
+                                    <h2 class="no_margin_top no_padding_top">&nbsp;</h2>
+                                    <div class="clr"></div>
+                                  </div>
+                                  <div class="clr" ></div>
+                                  
+                                  <div class="pic fr img_hover_box"> <a href="http://www.youtube.com/watch?v=gNxXZw6jMKs" class="prettyPhoto" rel="prettyPhoto[id]"><img src="../IMG06.png" width="456" height="246" alt="ORDER PICKER" />
+                                    <div class="img_hover_overlay">
+                                      <div class="r_plus"></div>
+                                    </div>
+                                  </a></div>
+                                
+                                  <p>Any person required to operate a order picker autonomously in Australia is required to hold a Licence to Perform High Risk Work. High Risk Work Licence assessments must only be conducted by a Registered Training Organisation that is authorised by WorkSafe Victoria. As of October 1 2012 there are some mandated changes taking place regarding the training and assessment process' for high risk work. Check the this PDF &quot;High Risk Work Process&quot; for information on the right process for you.</p>
+                                  <p>&nbsp;</p>
+                                  <p>Is for people who are required to operate a order picker or stock picker. We can deliver this training at the clients site. Course length will vary depending on the number of applicants and whether or not they have previous experience logged into a log book (verified by licenced driver).</p>
+                                  <p><br />
+                                  Refresher</p>
+                                  <p>Refresher courses are for already licenced order picker operators. Australian Standards AS 2359.2 recommends that equipment operators receive ongoing theoretical/practical training, competency assessments and refresher courses. These courses are conducted at the clients site.</p>
+                                  <p><p><span class="buttonFront7"><a href="documents.html">Find the Flyer</a></span></p></p>
+                                  <p>&nbsp;</p>
+                                  <div id="walkie"></div>
+                                
+                                         <div class="sep2" id="method3"></div>
+                                         <div class="h2_background" >
+                                  <h2 class="no_margin_top no_padding_top">
+                                    <div class="buttonFront5"><span class="pw" >Pedestrian Stacker (Walkie Stacker)</span></div>
+                                  </h2>
+                                  <p>&nbsp;</p>
+                                  <div class="clr"></div>
+                                </div>
+                                <h2 class="no_margin_top no_padding_top">&nbsp;</h2>
+                                <div class="clr"></div>
+                              </div>
+                              <div class="clr" ></div>
+                              
+                              <div class="pic fr img_hover_box"> <a href="http://www.youtube.com/watch?v=ca9JTQS3cxo" class="prettyPhoto" rel="prettyPhoto[id]"><img src="../images/IMG07.png" width="456" height="246" alt="Image" />
+                                <div class="img_hover_overlay">
+                                  <div class="r_plus"></div>
+                                </div>
+                              </a></div>
+                              <p>This course informs walkie stacker operators of the same responsibilities and risks that apply to operators of ride on forklifts. Although the walkie stacker may not require a licence to operate, they still posses the same hazards and risks as ride on forklifts. This course can be delivered as a familiarisation session for new operators of for experienced operators who have not had previous training. Courses are delivered at the client&rsquo;s site.</p>
+                              <p>&nbsp;</p>
+                              <p>&nbsp;</p>
+                              <p><p><p><span class="buttonFront7"><a href="documents.html">Find the Flyer</a></span></p></p>
+                              </div><div id="aware"></div>
+                              <div class="sep2" id="method4"></div>
+                              <div class="h2_background" >
+                                  <h2 class="no_margin_top no_padding_top">
+                                    <div class="buttonFront5"><span class="pw" >Forklift Awareness for Pedestrians</span></div>
+                                </h2>
+                                  <p>&nbsp;</p>
+                                  <div class="clr"></div>
+                              </div>
+                                <h2 class="no_margin_top no_padding_top">&nbsp;</h2>
+                                <div class="clr"></div>
+                          </div>
+                              <div class="clr" ></div>
+                            <div class="pic fr img_hover_box"> <a href="http://www.youtube.com/watch?v=mrbOKXEJ7m4" class="prettyPhoto" rel="prettyPhoto[id]"><img src="../images/img02small.png" width="456" height="246" alt="FORKLIFT AWARENESS" />
+                                <div class="img_hover_overlay">
+                                  <div class="r_plus"></div>
+                            </div>
+                              </a></div>
+                              <p>This course is developed to provide operators of electric pallet movers with the underpinning knowledge required to safely operate this equipment. This course is suitable for experienced operators or first time users. Courses are delivered at the client’s site.</p>
+                              <p>&nbsp;</p>
+                            <p>In Victoria between 1985 and 2006 there were 56 forklift related fatalities. Of these 30 were pedestrians, 16 were hit by loads and 14 were struck by a forklift (in addition to this 8 fell from forklift forks or load while being lifted). <br />
+                                This short course/information session informs pedestrians in the warehouse of the dangers that forklifts posses and to educate pedestrians on the operating  characteristics of the forklift and how to avoid becoming another statistic. <br />
+                                Forklift braking distances, right of way and pedestrian accident statistics are just a few of the topics discussed in this information session. Duration is approximately 45 mins.                              </p></div>
+                            <p><span class="buttonFront7"><a href="documents.html">Find the Flyer</a></span></p>
+                            <p>&nbsp;</p>
+                       
+                          <div id="pallet"></div>
+                        <div class="content_full_size">
+                                <div class="#">
+                                  <div class="sep2" id="method5"></div>
+                                  <div class="h2_background" >
+                                    <h2 class="no_margin_top no_padding_top">
+                                      <div class="buttonFront5"><span class="pw" >Powered pallet movers (electric pallet trucks)</span></div>
+                                    </h2>
+                                    <p>&nbsp;</p>
+                                    <div class="clr"></div>
+                                  </div>
+                                  <h2 class="no_margin_top no_padding_top">&nbsp;</h2>
+                                  <div class="clr"></div>
+                          </div>
+                                <div class="clr" ></div>
+                          <div class="pic fr img_hover_box"> <a href="http://www.youtube.com/watch?v=MVaHy5tTgIk" class="prettyPhoto" rel="prettyPhoto[id]"><img src="../images/IMG08.png" width="456" height="246" alt="ELECTRIC PALLET JACKS" />
+                                  <div class="img_hover_overlay">
+                                    <div class="r_plus"></div>
+                            </div>
+                          </a></div>
+                                <p>This course is developed to provide operators of electric pallet movers with the underpinning knowledge required to safely operate this equipment. This course is suitable for experienced operators or first time users. Courses are delivered at the client’s site.</p>
+                                <p><span class="buttonFront7"><a href="documents.html">Find the Flyer</a></span>
+                                </p><div id="white"></div>
+                        </div>
+                              <h2 class="no_margin_top no_padding_top">&nbsp;</h2>
+                                <div class="clr"></div>
+                      </div>
+                      <div class="clr" ></div>
+                          
+                              <h2 class="no_margin_top no_padding_top">&nbsp;</h2>
+                                <div class="clr"></div>
+                    </div>
+                    <div class="txt" ></div>
+                              
+                        <div class="content_full_size">
+                                <div class="#">
+                                  <div class="sep2" id="method6"></div>
+                                  <div class="h2_background" >
+                                    <h2 class="no_margin_top no_padding_top">
+                                      <div class="buttonFront5"><span class="pw" >The Construction White Card</span></div>
+                                    </h2>
+                                    <p>&nbsp;</p>
+                                    <div class="clr"></div>
+                                  </div>
+                                  <h2 class="no_margin_top no_padding_top">&nbsp;</h2>
+                                  <div class="clr"></div>
+                          </div>
+                                <div class="clr" ></div>
+                                <div class="pic fr img_hover_box"> <a href="http://www.youtube.com/watch?v=Nz8H829xt4Y" class="prettyPhoto" rel="prettyPhoto[id]"><img src="../images/IMG09.png" width="456" height="246" alt="WHITE CARD" />
+                                  <div class="img_hover_overlay">
+                                    <div class="r_plus"></div>
+                                </div>
+                          </a></div>
+                                <p>The Construction (OH&S Induction) Card (CIC) training establishes general, industry-wide OH&S training and is a requirement for all people who work on construction sites, both domestic and commercial.  </p>
+                              <p>The training was established by unions, employer associations, the Victorian Workcover Authority and the Office of the Chief Electrical Inspector and finalised by the Victorian Construction Industry Training Agreement in January 2001. </p>
+                              <p>As of 1st July 2008, all White cards are issued through WorkSafe, however training will continue to be carried out by the HiViz Ed on their behalf.
+                                
+                                You will be required to bring photo identification to the course.  At the end of the training, the HiViz Ed will issue you with a Statement of Attainment for CPCCOHS1001A Work Safely in the Construction Industry.</p><div id="traffic">
+                    </div><p><span class="buttonFront7"><a href="documents.html">Find the Flyer</a></span></p>
+                    <p>&nbsp;</p>
+                        <div class="content_full_size">
+                          <div class="#">
+                            <div class="sep2" id="method7"></div>
+                            <div class="h2_background" >
+                              <h2 class="no_margin_top no_padding_top">
+                                <div class="buttonFront5"><span class="pw" >Traffic Control</span></div>
+                              </h2>
+                              <p>&nbsp;</p>
+                              <div class="clr"></div>
+                            </div>
+                            <h2 class="no_margin_top no_padding_top">&nbsp;</h2>
+                            <div class="clr"></div>
+                          </div>
+                          <div class="clr" ></div>
+                          <div class="pic fr img_hover_box"> <a href="http://www.youtube.com/watch?v=kXFTgDyUjrg" class="prettyPhoto" rel="prettyPhoto[id]"><img src="../images/IMG10.png" width="456" height="246" alt="Image" />
+                            <div class="img_hover_overlay">
+                              <div class="r_plus"></div>
+                          </div>
+                          </a></div>
+                          <p>All personnel responsible for preparing and implementing worksite traffic management must be appropriately qualified. The minimum required training for various functions is outlined below:</p>
+                          <p>Traffic control using stop/slow bat – all field personnel designated as a Traffic Controller must have undertaken a course in traffic control  i.e. RIIOHS205A – “Control Traffic with a stop/slow bat” or equivalent, or an appropriate refresher course (within the last three years), from a Registered Training Organisation accredited under the Australian Qualifications Framework.                            </p>
+                          <p>Traffic Guidance Scheme (TGS) implementation – all field personnel responsible for setting out, implementing and/or monitoring a TGS (as required by a traffic management plan) must have undertaken a course in TGS implementation e.g. RIIOHS302A – “Implement traffic management plan” or equivalent, or an appropriate refresher course (within the last three years), from a Registered Training Organisation accredited under the Australian Qualifications Framework.                            </p>
+                          <p>Traffic Management Plan (TMP) preparation - all personnel responsible for preparing, approving, reviewing and/or making modifications to a x TMP (including the worksite hazard assessment) must have undertaken a course in TMP preparation e.g. RIICWD503A - “Prepare work zone traffic management plan”, or equivalent, or an appropriate refresher course (within the last three years), from a Registered Training Organisation accredited under the Australian Qualifications Framework OR have at least two years experience in preparing TMPs. </p>
+                        </div><p><span class="buttonFront7"><a href="documents.html">Find the Flyer</a></span></p>
+                        <p>&nbsp;</p>
+                        <div class="sep2"></div>
+                         <div class="col4 cols_no_bg">
+                          <div class="div_h3_act_href ico_1">
+                            <h2><a href="default.html#contact">Email Us</a></h2>
+                            <p class="detail"><a href="default.html#contact">info@hivized.com.au</a></p>
+                          </div>
+                        </div>
+                        <div class="col4 cols_no_bg second">
+                          <div class="div_h3_act_href ico_2">
+                            <h2><a href="default.html"><em>Phone Us</em></a></h2>
+                            <p class="detail"><a href="default.html#contact">
+                            03 8795 7964
+                            </a></p>
+                          </div>
+                        </div>
+                        <div class="col4 cols_no_bg">
+                          <div class="div_h3_act_href ico_3">
+                            <h2><a href="http://goo.gl/maps/C3ff5" target="1 Westpool Drive"><em>Visit Us</em></a></h2>
+                            <p class="detail"><a href="http://goo.gl/maps/efKvW" target="new">1 Westpool Drive Hallam</a></p>
+                          </div>
+                        </div>
+                        <div class="col4 cols_no_bg last">
+                          <div class="div_h3_act_href ico_4">
+                            <h2><a href="http://training.gov.au/Organisation/Details/40793" target="new"><em>Check Us Out</em></a></h2>
+                            <p class="detail"><a href="http://training.gov.au/Organisation/Details/40793" title="RTO details" target="new">training.gov.au</a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="clr"></div>
+                    </div>
+                    <div class="clr"></div>
+                  </div>
+                  <div class="clr"></div>
+                </div>
+                <div class="h2_background">
+                  <h2><span>Get in touch.</span> </h2>
+                </div>
+                <div class="content_full_size">
+                  <div class="clr"></div>
+                  <div class="clr"></div>
+                  <br />
+                  <p>Our friendly customer service representatives are committed to answering all your questions and meeting any need you may have. We’d love to hear from you! Please fill out the form below so we may assist you. </p>
+                </div>
+              </div>
+            </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clr"></div>
+  </div>
+</div>
+</body>
+</html>

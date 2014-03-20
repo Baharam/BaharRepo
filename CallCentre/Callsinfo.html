@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<head>
+
+<title>Interact Eduction</title>
+<link href="Input.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="headstyle.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<script>
+var userid;
+var company;
+var NewDets;
+var dbSec;
+
+function Dets() {
+
+var retrievedObject = localStorage.getItem('testObject');
+NewDets = JSON.parse(retrievedObject);
+document.getElementById("Userdets").innerHTML = 'Currently logged on :- ' + NewDets.User;
+dbSec = '&u=' + NewDets.User + '&p=' + NewDets.Pass;
+userid = NewDets.Uid;
+}
+
+function save(type) {
+if ('1'== type) {if ('0'== document.getElementById("course").value){alert('Please select course!');return;}}
+
+txt = "b=exec SaveContact ";
+txt = txt + userid + ", "; 
+txt = txt + document.getElementById("IdNo").value + ", "; 
+txt = txt + document.getElementById("course").value + ", '"; 
+txt = txt + document.getElementById("notes").value + "', "; 
+txt = txt + type; 
+txt = txt + dbSec; 
+
+xmlhttp=new XMLHttpRequest();
+xmlhttp.open("POST","dBase2.php",true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.setRequestHeader("Content-length", txt.length);
+xmlhttp.setRequestHeader("Connection", "close");
+
+xmlhttp.onreadystatechange=function()
+   {
+   if (xmlhttp.readyState==4)
+      {	
+        document.getElementById("IdNo").value='';
+        document.getElementById("cand").value='';
+	document.getElementById("add").value='';
+	document.getElementById("city").value='';
+	document.getElementById("stat").value='';
+	document.getElementById("pcode").value='';
+	document.getElementById("ph1").value='';
+	document.getElementById("ph2").value='';
+	document.getElementById("dob").value='';
+	document.getElementById("course").value='0';
+	document.getElementById("notes").value='';
+	next();
+      }
+   }
+
+xmlhttp.send(txt);
+}
+
+function reset(indval) {
+Dets();
+
+txt = 'b=exec ResetCalls 2' + userid + ', 2';
+txt = txt + dbSec; 
+
+xmlhttp=new XMLHttpRequest();
+xmlhttp.open("POST","dBase2.php",true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.setRequestHeader("Content-length", txt.length);
+xmlhttp.setRequestHeader("Connection", "close");
+
+xmlhttp.onreadystatechange=function()
+   {
+   if (xmlhttp.readyState==4)
+      {	
+	document.getElementById("IdNo").value='';
+	document.getElementById("cand").value='';
+	document.getElementById("add").value='';
+	document.getElementById("city").value='';
+	document.getElementById("stat").value='';
+	document.getElementById("pcode").value='';
+	document.getElementById("ph1").value='';
+	document.getElementById("ph2").value='';
+	document.getElementById("dob").value='';
+	document.getElementById("notes").value='';
+	next();
+      }
+   }
+
+xmlhttp.send(txt);
+}
+
+
+function next() {
+
+txt = 'b=exec Inputinfo 2' + userid;
+txt = txt + ", '" + document.getElementById("Comp").value + "'";
+txt = txt + dbSec; 
+
+xmlhttp=new XMLHttpRequest();
+xmlhttp.open("POST","dBaseQuals.php",true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.setRequestHeader("Content-length", txt.length);
+xmlhttp.setRequestHeader("Connection", "close");
+
+
+xmlhttp.onreadystatechange=function()
+   {
+   if (xmlhttp.readyState==4)
+      {	
+	if((xmlhttp.responseText).length < 10){
+		alert('No records!');
+		return;
+	}
+        objData1 = JSON.parse(xmlhttp.responseText);
+        document.getElementById("IdNo").value = objData1.ResumeId;
+        document.getElementById("cand").value = objData1.Candidate;
+	document.getElementById("add").value = objData1.Address;
+	document.getElementById("city").value = objData1.City;
+	document.getElementById("stat").value = objData1.State;
+	document.getElementById("pcode").value = objData1.PCode;
+	document.getElementById("ph1").value = objData1.Phnumber;
+	document.getElementById("ph2").value = objData1.Phnumber2;
+	document.getElementById("dob").value = objData1.DOB.date;
+      }
+   }
+xmlhttp.send(txt);
+}
+
+</script>
+
+<body onload="reset(1)">
+<div id="wrapper">
+  <div id="header">
+    <div id="logo">
+    <h1>Pro-Active Training</h1>
+    <h2>...Call Centre Application</h2>		
+	<p id="Userdets"></p>
+    </div>
+  </div>
+</div>
+<div id="details">
+<div id="leftcol">
+	<label><input class="button" type="button" value="Home" onclick="location.href='default.html'"/></label><br />
+	<label><input class="button" type="button" value="Book Course" onclick="save(1)"/></label><br />
+	<label><input class="button" type="button" value="Further Contact" onclick="save(2)"/></label><br />
+	<label><input class="button" type="button" value="No Answer" onclick="save(3)"/></label><br />
+	<label><input class="button" type="button" value="Not Interested" onclick="save(6)"/></label><br />
+	<label><input class="button" type="button" value="Lives Interstate" onclick="save(7)"/></label><br />
+	<label><input class="button" type="button" value="Not Eligible" onclick="save(8)"/></label><br />
+</div>
+
+<div id="midcol">
+<label for="Comp">Company:- </label> 
+<select id="Comp" class="ta" onchange="reset(this.value)">
+   <option value="Bluestone">Bluestone</option>
+   <option value="ATS">ATS</option>
+   <option value="Skilled">Skilled</option>
+   <option value="Other">Other</option>
+</select><br />
+<label for="course">Available Courses:- </label> 
+<select id="course" class="ta">
+   <option value="0">Please Select</option>
+   <option value="1">CertII - 01/01/14</option>
+   <option value="2">CertII - 15/01/14</option>
+   <option value="3">CertII - 01/02/14</option>
+   <option value="4">CertII - 15/01/14</option>
+   <option value="5">CertIII - 01/01/14</option>
+   <option value="6">CertIII - 15/01/14</option>
+</select><br />
+     <label for="IdNo">Id Number:- </label> 
+     <input type="text" id="IdNo" class="input" /><br />
+     <label for="notes">Notes:-</label>
+     <textarea id="notes" class="ta" rows="4" cols="50"></textarea>
+</div>
+
+<div id="rightcol">
+     <label for="cand">Candidate Name:-</label>
+     <input type="text" id="cand" class="input" /><br />
+     <label for="add">Address:- </label> 
+     <input type="text" id="add" class="input" /><br />
+     <label for="city">City:- </label> 
+     <input type="text" id="city" class="input" /><br />
+     <label for="stat">State:- </label> 
+     <input type="text" id="stat" class="input" /><br />
+     <label for="pcode">Postcode:- </label> 
+     <input type="text" id="pcode" class="input" /><br />
+     <label for="ph1">Phone No:- </label> 
+     <input type="text" id="ph1" class="input" /><br />
+     <label for="ph2">Alt Ph No:- </label> 
+     <input type="text" id="ph2" class="input" /><br />
+     <label for="dob">Birth Date:- </label> 
+     <input type="date" id="dob" class="input" /><br />
+<br />
+</div>
+</div>
+</div>
+</body>
+</html> 

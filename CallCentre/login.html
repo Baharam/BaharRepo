@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href="Input.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="headstyle.css" rel="stylesheet" type="text/css" media="screen" />
+<title>Interact Eduction</title>
+</head>
+<script> 
+ 
+function Login() { 
+txt = 'b=' + user.value + '&c=' + pass.value;
+
+xmlhttp=new XMLHttpRequest();
+xmlhttp.open("POST","dBaseSec1.php",true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.setRequestHeader("Content-length", txt.length);
+xmlhttp.setRequestHeader("Connection", "close");
+
+
+xmlhttp.onreadystatechange=function()
+   {
+   if (xmlhttp.readyState==4)
+      {	
+	ans = xmlhttp.responseText;
+	if(ans==0){
+		alert('Login denied!');
+		return;
+	}
+	if (ans != '0') {
+		var testObject = { 'User': user.value, 'Pass': pass.value, 'Uid': ans };
+		localStorage.setItem('testObject', JSON.stringify(testObject));
+		userpass = 1;
+		location.href='default.html';
+		}
+      }
+   }
+xmlhttp.send(txt);
+}
+ 
+
+</script> 
+<body>
+<div id="wrapper">
+  <div id="header">
+    <div id="logo">
+    <h1>Pro-Active Training</h1>
+    <h2>...Login Screen</h2>		
+    </div>
+  </div>
+</div>
+<div id="details"><br />
+     <label for="user">User Name:-</label>
+     <input type="text" id="user" class="input" /><br />
+     <label for="pass">Password:- </label> 
+     <input type="password" id="pass" /> 
+     <br /><br />
+     <input class="button" type="button" value="Student Login" onclick="Login()" /> 
+     <input class="button" type="button" value="Sales Login" onclick="Login()" /> 
+     <input class="button" type="button" value="Supplier Login" onclick="Login()" /> 
+     <input class="button" type="button" value="Employee Login" onclick="Login()" /> 
+     <br />
+     <p><a href="chpassnewuser.html">New User</a>
+     <a href="chpass.html">Change Password</a>
+     </p> 
+
+ </div>
+</body>
+</html> 

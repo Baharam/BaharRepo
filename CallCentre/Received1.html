@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<head>
+
+<title>Interact Eduction</title>
+<link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet" type="text/css" />
+<link href="Input.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<script>
+
+function save() {
+alert('txt');
+ynqual = qualBool(document.getElementById("qual").checked);
+ynqual1 = qualBool1(document.getElementById("qual").checked);
+
+txt = "b=exec NewResume '";
+txt = txt + document.getElementById("Comp").value + "', '"; 
+txt = txt + document.getElementById("dtSub").value + "', '"; 
+txt = txt + document.getElementById("SubBy").value + "', '"; 
+txt = txt + document.getElementById("Appfor").value + "', '"; 
+txt = txt + document.getElementById("cand").value + "', "; 
+txt = txt + ynqual + ", "; 
+txt = txt + ynqual1; 
+alert(txt);
+
+xmlhttp=new XMLHttpRequest();
+xmlhttp.open("POST","dBase2.php",true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.setRequestHeader("Content-length", txt.length);
+xmlhttp.setRequestHeader("Connection", "close");
+
+xmlhttp.onreadystatechange=function()
+   {
+   if (xmlhttp.readyState==4)
+      {	
+ 	ans = xmlhttp.responseText;
+	txt1 = 'Record Id = ' + ans;
+ 	document.getElementById("IdNo").innerHTML = txt1;
+      }
+   }
+
+xmlhttp.send(txt);
+
+}
+
+function qualBool(inpvar)
+{
+ 	      if (1==inpvar){txt2=1;} else {txt2=0;}
+		return txt2;	      
+
+}
+
+function qualBool1(inpvar)
+{
+ 	      if (1==inpvar){txt2=12;} else {txt2=12;}
+		return txt2;	      
+
+}
+</script>
+
+<body>
+<form>
+     <label for="Comp">Company:-</label>
+     <input type="text" id="Comp" class="input" /><br />
+     <label for="dtSub">Date Submitted:-</label>
+     <input type="date" id="dtSub" class="input" /><br />
+     <label for="SubBy">Submitted By:- </label> 
+     <input type="text" id="SubBy" class="input" /><br />
+     <label for="Appfor">Position Applied:- </label> 
+     <input type="text" id="Appfor" class="input" /><br />
+     <br /><br />
+     <label for="cand">Candidate Name:-</label>
+     <input type="text" id="cand" class="input" /><br />
+     <label for="qual">Qualifications:-</label>
+     <input type="checkbox" id="qual" class="input" /><br />
+     <p id="IdNo"></p>
+ 	<br /><br />
+	<label><input class="button" type="button" value="Home" onclick="location.href='default.html'"/></label>
+	<label><input class="button" type="button" value="Save" onclick="save()"/></label>
+	<label><input class="button" type="button" value="Next" onclick="next()"/></label>  
+</form> 
+</body>
+</html> 

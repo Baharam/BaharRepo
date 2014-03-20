@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href="Input.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="headstyle.css" rel="stylesheet" type="text/css" media="screen" />
+<title>Interact Eduction</title>
+</head>
+<script> 
+ 
+function save() { 
+if (pass1.value != pass2.value) {
+	alert('The new passwords do not match. Changes not saved.');
+	return
+	}
+        
+if (CheckPassword(pass2.value) < 4) { 
+        alert("Password is not strong enough!"); 
+        return; 
+        } 
+
+txt = 'b=' + user.value + '&c=' + pass.value + '&d=' + pass1.value;
+
+xmlhttp=new XMLHttpRequest();
+xmlhttp.open("POST","dBaseSecChange.php",true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.setRequestHeader("Content-length", txt.length);
+xmlhttp.setRequestHeader("Connection", "close");
+
+
+xmlhttp.onreadystatechange=function()
+   {
+   if (xmlhttp.readyState==4)
+      {	
+	ans = xmlhttp.responseText;
+	alert(ans);
+	if(ans==0){
+		alert('Password change failed. Try again!');
+		return;
+	}
+	user.value="";
+	pass.value="";
+	pass1.value="";
+	pass2.value="";
+	alert(ans);
+	location.href='login.html';
+      }
+   }
+xmlhttp.send(txt);
+}
+ 
+function CheckPassword(password) { 
+    var score = 1; 
+    if (password.length < 1) 
+       return 1; 
+    if (password.length < 4) 
+        return 1; 
+    if (password.length >= 8) 
+       score++; 
+    if (password.length >= 10) 
+       score++; 
+    if (password.match(/\d+/)) 
+       score++; 
+    if (password.match(/[a-z]/) && 
+       password.match(/[A-Z]/)) 
+       score++; 
+    if (password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,£,(,)]/)) 
+   	   score++; 
+       return score; 
+} 
+
+</script> 
+<body>
+<div id="wrapper">
+  <div id="header">
+    <div id="logo">
+    <h1>Pro-Active Training</h1>
+    <h2>...Login Screen</h2>		
+    </div>
+  </div>
+</div>
+<div id="details"><br />
+     <label for="user">User Name:-</label>
+     <input type="text" id="user" class="input" /><br />
+     <label for="pass">Old Password:- </label> 
+     <input type="password" id="pass" /><br /> 
+     <label for="pass1">New Password:- </label> 
+     <input type="password" id="pass1" /><br /> 
+     <label for="pass2">Re-type New:- </label> 
+     <input type="password" id="pass2" /> 
+     <br /><br />
+     <input class="button" type="button" value="Save Changes" onclick="save()" /> 
+     <br />
+
+ </div>
+</body>
+</html> 
