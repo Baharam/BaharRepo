@@ -1,0 +1,9 @@
+c:\users\bahar\documents\visual studio 2012\Projects\GalaxyMerchantGuide\GalaxyMerchantGuide\bin\Debug\GalaxyMerchantGuide.exe.config
+c:\users\bahar\documents\visual studio 2012\Projects\GalaxyMerchantGuide\GalaxyMerchantGuide\obj\Debug\GalaxyMerchantGuide.csprojResolveAssemblyReference.cache
+c:\users\bahar\documents\visual studio 2012\Projects\GalaxyMerchantGuide\GalaxyMerchantGuide\obj\Debug\GalaxyMerchantGuide.Form1.resources
+c:\users\bahar\documents\visual studio 2012\Projects\GalaxyMerchantGuide\GalaxyMerchantGuide\obj\Debug\GalaxyMerchantGuide.Properties.Resources.resources
+c:\users\bahar\documents\visual studio 2012\Projects\GalaxyMerchantGuide\GalaxyMerchantGuide\obj\Debug\GalaxyMerchantGuide.csproj.GenerateResource.Cache
+c:\users\bahar\documents\visual studio 2012\Projects\GalaxyMerchantGuide\GalaxyMerchantGuide\bin\Debug\GalaxyMerchantGuide.exe
+c:\users\bahar\documents\visual studio 2012\Projects\GalaxyMerchantGuide\GalaxyMerchantGuide\bin\Debug\GalaxyMerchantGuide.pdb
+c:\users\bahar\documents\visual studio 2012\Projects\GalaxyMerchantGuide\GalaxyMerchantGuide\obj\Debug\GalaxyMerchantGuide.exe
+c:\users\bahar\documents\visual studio 2012\Projects\GalaxyMerchantGuide\GalaxyMerchantGuide\obj\Debug\GalaxyMerchantGuide.pdb

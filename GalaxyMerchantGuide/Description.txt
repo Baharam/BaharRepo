@@ -1,0 +1,19 @@
+
+This application consist of 5 classes as follow:
+1.FileReader: 
+	a.This static class is responsible to read a file and make a list of string, each item represents each line of the file
+	b.This class is used to read input file and is called in the windows form behind Calculate button
+2.Translator:
+	a.Translation starts here, this class is responsible to translate input data to output data 
+	b.Alian To Roman Dictionary is created here using AlianToRomanDictionary
+	c.Credit values are calculated here using Credit 
+	d.It uses RomanNumber class to answer to question using its calculation method
+3.AlianToRomanDictionary:
+	a.This class has a field represents dictionary values (e.g. glob = I)
+	b.It has a method which fills this dictionary using input strings
+4.Credit:
+	a.This class has a field represents credit values (e.g. Silver = 34)
+	b.It has a method which calculates Credit values
+5.RomanNumber:
+	a.It has 2 methods responsible to validate input data
+	b.It has a calculation method, which calculate roman numbers by considering defined rules
